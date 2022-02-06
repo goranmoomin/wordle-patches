@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover" />
 
     <title>Wordle - A daily word game</title>
     <meta name="description" content="Guess the hidden word in 6 tries. A new puzzle is available each day.">
@@ -38,7 +38,7 @@
         /* Colorblind colors */
         --orange: #f5793a;
         --blue: #85c0f9;
-        font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+        font-family:  -apple-system, BlinkMacSystemFont, 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
         font-size: 16px;
         --header-height: 50px;
         --keyboard-height: 200px;
@@ -75,6 +75,8 @@
         --color-present: var(--yellow);
         --color-correct: var(--green);
         --color-absent: var(--color-tone-2);
+        --icon-color: var(--color-tone-3);
+        --header-text-color: var(--color-tone-7);
         --tile-text-color: var(--color-tone-7);
         --key-text-color: var(--color-tone-1);
         --key-evaluated-text-color: var(--color-tone-7);
@@ -88,6 +90,7 @@
         --color-present: var(--darkendYellow);
         --color-correct: var(--darkendGreen);
         --color-absent: var(--color-tone-4);
+        --header-text-color: var(--color-tone-1);
         --tile-text-color: var(--color-tone-1);
         --key-text-color: var(--color-tone-1);
         --key-evaluated-text-color: var(--color-tone-1);
@@ -105,12 +108,28 @@
         --key-bg-correct: var(--color-correct);
         --key-bg-absent: var(--color-absent);
       }
+      :root {
+        --inset-top: env(safe-area-inset-top);
+        --inset-bottom: env(safe-area-inset-bottom);
+        --inset-left: env(safe-area-inset-left);
+        --inset-right: env(safe-area-inset-right);
+        --inset: var(--inset-top) var(--inset-bottom) var(--inset-left) var (--inset-right);
+      }
       html {
-        height: 100%;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: var(--inset);
+        background-color: var(--color-background);
       }
       body {
-        height: 100%;
-        background-color: var(--color-background);
+        position: absolute;
+        top: var(--inset-top);
+        bottom: var(--inset-bottom);
+        left: var(--inset-left);
+        right: var(--inset-right);
         margin: 0;
         padding: 0;
         /* Prevent scrollbar appearing on page transition */
